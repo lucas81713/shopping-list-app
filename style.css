@@ -1,16 +1,63 @@
 body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  min-height: 100;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-
-  background: url("images/day-bg.jpg") center / cover no-repeat fixed;
-  color: #111;
-
-  transition: background 0.4 ease, color 0.4 ease;
 }
 
-body.dark {
-  background: url("images/bg-dark.jpg") center / cover no-repeat fixed;
-  color: #f1f1f1;
+.app {
+  background: white;
+  padding: 20px;
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+li {
+  padding: 10px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #e2e8f0;
+}
