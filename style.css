@@ -1,8 +1,7 @@
-/* ---------- BASE ---------- */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
   min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
 
   background: url("images/day-bg.jpg") center / cover no-repeat fixed;
   color: #111;
@@ -10,7 +9,6 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ---------- DARK MODE ---------- */
 body.dark {
   background: url("images/bg-dark.jpg") center / cover no-repeat fixed;
   color: #f1f1f1;
