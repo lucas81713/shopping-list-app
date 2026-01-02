@@ -1,11 +1,12 @@
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,41 +15,37 @@ body {
 
 .app {
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
+  padding: 18px;
   background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
+  padding: 14px;
+  font-size: 17px;
+  border-radius: 12px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
 }
 
 #addBtn {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   background: #4f46e5;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 17px;
   cursor: pointer;
-  margin-bottom: 14px;
-}
-
-#addBtn:hover {
-  background: #4338ca;
+  margin-bottom: 16px;
 }
 
 ul {
@@ -61,16 +58,17 @@ ul {
 li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 12px;
+  padding: 12px;
   background: #f1f5f9;
-  border-radius: 10px;
-  margin-bottom: 8px;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
-/* TEXT */
+/* TEXT AREA */
 li span {
   flex: 1;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -80,21 +78,16 @@ li.done span {
   opacity: 0.6;
 }
 
-/* DELETE BUTTON */
+/* DELETE BUTTON — BIGGER TAP AREA */
 .delete-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
   background: #4f46e5;
   color: red;
   border: none;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-}
-
-.delete-btn:hover {
-  background: #4338ca;
 }
