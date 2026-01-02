@@ -4,13 +4,13 @@ const list = document.getElementById("list");
 
 let items = JSON.parse(localStorage.getItem("shoppingList")) || [];
 
-// Save to localStorage
-function saveList() {
+// SAVE
+function save() {
   localStorage.setItem("shoppingList", JSON.stringify(items));
 }
 
-// Render list
-function renderList() {
+// RENDER
+function render() {
   list.innerHTML = "";
 
   items.forEach((item, index) => {
@@ -22,41 +22,43 @@ function renderList() {
 
     span.addEventListener("click", () => {
       items[index].done = !items[index].done;
-      saveList();
-      renderList();
+      save();
+      render();
     });
 
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "✖";
-    delBtn.className = "delete-btn";
+    const del = document.createElement("button");
+    del.textContent = "✖";
+    del.className = "delete-btn";
 
-    delBtn.addEventListener("click", () => {
+    del.addEventListener("click", (e) => {
+      e.stopPropagation();
       items.splice(index, 1);
-      saveList();
-      renderList();
+      save();
+      render();
     });
 
     li.appendChild(span);
-    li.appendChild(delBtn);
+    li.appendChild(del);
     list.appendChild(li);
   });
 }
 
-// Add item
-addBtn.addEventListener("click", () => {
+// ADD
+function addItem() {
   const text = input.value.trim();
   if (!text) return;
 
   items.push({ text, done: false });
   input.value = "";
-  saveList();
-  renderList();
+  save();
+  render();
+}
+
+addBtn.addEventListener("click", addItem);
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addItem();
 });
 
-// Enter key support
-input.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") addBtn.click();
-});
-
-// Initial render
-renderList();
+// INITIAL
+render();
