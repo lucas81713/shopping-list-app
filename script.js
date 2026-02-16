@@ -1,38 +1,74 @@
-const form = document.getElementById("itemForm");
 const input = document.getElementById("itemInput");
+const button = document.getElementById("addBtn");
 const list = document.getElementById("list");
 
-function addItem(text) {
+/* ---------- SAVE LIST ---------- */
+function saveList() {
+  const items = [];
+
+  document.querySelectorAll("#list li").forEach(li => {
+    items.push({
+      text: li.querySelector("span").textContent,
+      done: li.classList.contains("done")
+    });
+  });
+
+  localStorage.setItem("listoreData", JSON.stringify(items));
+}
+
+/* ---------- CREATE ITEM ---------- */
+function createItem(text, done = false) {
   const li = document.createElement("li");
 
   const span = document.createElement("span");
   span.textContent = text;
 
-  const del = document.createElement("button");
-  del.textContent = "";
-  del.className = "delete-btn";
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "✕";
+  removeBtn.className = "remove";
 
+  /* Toggle complete */
   span.addEventListener("click", () => {
-    span.classList.toggle("done");
+    li.classList.toggle("done");
+    saveList();
   });
 
-  del.addEventListener("click", (e) => {
+  /* Delete */
+  removeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     li.remove();
+    saveList();
   });
 
   li.appendChild(span);
-  li.appendChild(del);
+  li.appendChild(removeBtn);
+
+  if (done) li.classList.add("done");
+
   list.prepend(li);
+  saveList();
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
+/* ---------- ADD ITEM ---------- */
+function addItem() {
   const text = input.value.trim();
   if (!text) return;
 
-  addItem(text);
+  createItem(text);
   input.value = "";
+}
+
+button.addEventListener("click", addItem);
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addItem();
 });
 
+/* ---------- LOAD SAVED ITEMS ---------- */
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("listoreData")) || [];
+
+  saved.reverse().forEach(item => {
+    createItem(item.text, item.done);
+  });
+});
