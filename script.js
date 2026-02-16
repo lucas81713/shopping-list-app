@@ -27,13 +27,11 @@ function createItem(text, done = false) {
   removeBtn.textContent = "✕";
   removeBtn.className = "remove";
 
-  /* Toggle complete */
   span.addEventListener("click", () => {
     li.classList.toggle("done");
     saveList();
   });
 
-  /* Delete */
   removeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     li.remove();
@@ -61,7 +59,10 @@ function addItem() {
 button.addEventListener("click", addItem);
 
 input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") addItem();
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addItem();
+  }
 });
 
 /* ---------- LOAD SAVED ITEMS ---------- */
