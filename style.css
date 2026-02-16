@@ -1,3 +1,4 @@
+/* ---------- GLOBAL ---------- */
 * {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -10,9 +11,8 @@ html, body {
   background: #6f8fdc;
 }
 
-/* ⬇️ IMPORTANT CHANGE HERE */
+/* ---------- BODY LAYOUT ---------- */
 body {
-  margin: 0;
   min-height: 100vh;
 
   display: flex;
@@ -22,6 +22,7 @@ body {
   background-color: #ddb3e3;
 }
 
+/* ---------- APP CARD ---------- */
 .app {
   background: white;
   width: 320px;
@@ -30,17 +31,20 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.18);
 }
 
+/* ---------- TITLE ---------- */
 h1 {
   text-align: center;
   margin-bottom: 16px;
 }
 
+/* ---------- FORM ---------- */
 form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+/* ---------- INPUT ---------- */
 input {
   padding: 12px;
   font-size: 16px;
@@ -48,6 +52,7 @@ input {
   border: 1px solid #ccc;
 }
 
+/* ---------- ADD BUTTON ---------- */
 button {
   padding: 12px;
   font-size: 16px;
@@ -56,59 +61,64 @@ button {
   background: #d491ed;
   color: white;
   cursor: pointer;
+  transition: transform 0.1s ease, background 0.2s ease;
 }
 
 button:active {
   transform: scale(0.97);
 }
 
+/* ---------- LIST ---------- */
 ul {
   list-style: none;
   padding: 0;
   margin-top: 16px;
 }
 
+/* ---------- LIST ITEM ---------- */
 li {
   background: #eef2ff;
   margin-bottom: 8px;
   padding: 12px;
   border-radius: 12px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* ---------- ITEM TEXT ---------- */
 li span {
   flex: 1;
   cursor: pointer;
 }
 
+/* ---------- DONE STATE ---------- */
 li span.done {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
+/* ---------- DELETE BUTTON ---------- */
 .delete-btn {
   background: #cf5151;
   color: white;
   border: none;
+
   width: 36px;
   height: 36px;
+
   border-radius: 10px;
   font-size: 18px;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.1s ease;
 }
 
 .delete-btn:active {
   transform: scale(0.9);
 }
-
-
-
-
-
-
-
-
-
-
