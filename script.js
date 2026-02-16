@@ -1,5 +1,5 @@
+const form = document.getElementById("listForm");
 const input = document.getElementById("itemInput");
-const button = document.getElementById("addBtn");
 const list = document.getElementById("list");
 
 /* ---------- SAVE LIST ---------- */
@@ -9,7 +9,7 @@ function saveList() {
   document.querySelectorAll("#list li").forEach(li => {
     items.push({
       text: li.querySelector("span").textContent,
-      done: li.classList.contains("done")
+      done: li.querySelector("span").classList.contains("done")
     });
   });
 
@@ -23,46 +23,39 @@ function createItem(text, done = false) {
   const span = document.createElement("span");
   span.textContent = text;
 
-  const removeBtn = document.createElement("button");
-  removeBtn.textContent = "✕";
-  removeBtn.className = "remove";
+  if (done) span.classList.add("done");
 
   span.addEventListener("click", () => {
-    li.classList.toggle("done");
+    span.classList.toggle("done");
     saveList();
   });
 
-  removeBtn.addEventListener("click", (e) => {
+  const del = document.createElement("button");
+  del.textContent = "✕";
+  del.className = "delete-btn";
+
+  del.addEventListener("click", (e) => {
     e.stopPropagation();
     li.remove();
     saveList();
   });
 
   li.appendChild(span);
-  li.appendChild(removeBtn);
-
-  if (done) li.classList.add("done");
+  li.appendChild(del);
 
   list.prepend(li);
   saveList();
 }
 
-/* ---------- ADD ITEM ---------- */
-function addItem() {
+/* ---------- FORM SUBMIT (PREVENT REFRESH HERE) ---------- */
+form.addEventListener("submit", (e) => {
+  e.preventDefault();  // ← THIS STOPS THE REFRESH
+
   const text = input.value.trim();
   if (!text) return;
 
   createItem(text);
   input.value = "";
-}
-
-button.addEventListener("click", addItem);
-
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    addItem();
-  }
 });
 
 /* ---------- LOAD SAVED ITEMS ---------- */
